@@ -6,84 +6,91 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     color: #333;
     line-height: 1.6;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
 }
 
 header {
+    background-color: #2a9d8f;
+    color: white;
     text-align: center;
-    margin-bottom: 20px;
+    padding: 40px 0;
+    border-radius: 8px;
+    margin-bottom: 30px;
 }
 
-h1 {
-    color: #2a2a2a;
-    font-size: 2.5em;
-    margin-bottom: 5px;
-}
-
-h2 {
-    margin-top: 30px;
-    color: #333;
-    font-size: 1.8em;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-}
-
-ul {
-    list-style-type: none;
-    margin-left: 20px;
-}
-
-li {
+header h1 {
+    font-size: 3em;
     margin-bottom: 10px;
 }
 
-a {
-    color: #0073e6;
+.subtitle {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.contact {
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.contact a {
+    color: #ffffff;
     text-decoration: none;
 }
 
-a:hover {
+.contact a:hover {
     text-decoration: underline;
 }
 
-button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 20px;
+section {
+    margin-bottom: 40px;
 }
 
-button:hover {
-    background-color: #555;
+h2 {
+    font-size: 2em;
+    color: #2a2a2a;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background-color: #333;
-    color: #f4f4f4;
+h3 {
+    color: #2a9d8f;
+    font-size: 1.5em;
 }
 
-body.dark-mode header {
-    color: #f4f4f4;
+ul {
+    margin-top: 10px;
 }
 
-body.dark-mode h2 {
-    color: #f4f4f4;
-    border-color: #555;
+li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    list-style-type: circle;
 }
 
-body.dark-mode button {
-    background-color: #555;
+ul li {
+    margin-left: 20px;
 }
 
-body.dark-mode button:hover {
-    background-color: #777;
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9em;
 }
+
+footer p {
+    color: #999;
+}
+

@@ -8,51 +8,119 @@
 </head>
 <body>
     <header>
-        <h1>Pooja Shinde</h1>
-        <p>Senior Business Intelligence Analyst | Ex-Amazon | Data Analytics Expert</p>
+        <div class="container">
+            <h1>Pooja Shinde</h1>
+            <p class="subtitle">Senior Business Intelligence Analyst | Data Analytics Expert | AWS Certified</p>
+            <p class="contact">Boston, MA | poojaxshinde@gmail.com | 617-620-1786 | <a href="https://www.linkedin.com/in/shinde-pooja" target="_blank">LinkedIn</a></p>
+        </div>
     </header>
-    
-    <section>
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>Amazon</strong> - Senior Business Intelligence Analyst</li>
-            <li><strong>Indian Association of Greater Boston</strong> - Executive Director</li>
-            <li><strong>Amazon Women in Engineering</strong> - Board Member</li>
-        </ul>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Harvard Business School Online</h3>
+                <p><strong>CORe (Credential of Readiness)</strong> | Mar 2025</p>
+                <p><strong>Coursework:</strong> Business Analytics, Economics for Managers & Financial Accounting</p>
+            </div>
+            <div class="education-item">
+                <h3>New Jersey Institute of Technology</h3>
+                <p><strong>Master of Science, Information Systems</strong> | May 2017</p>
+            </div>
+            <div class="education-item">
+                <h3>University of Pune</h3>
+                <p><strong>Bachelor of Engineering, Electronics & Telecommunication</strong> | May 2014</p>
+            </div>
+        </div>
     </section>
-    
-    <section>
-        <h2>Education</h2>
-        <p>Master’s in Information Systems - NJIT</p>
-        <p>Bachelor’s in Electronics & Telecommunication - University of Pune</p>
+
+    <section id="core-competencies">
+        <div class="container">
+            <h2>Core Competencies</h2>
+            <ul>
+                <li>Cloud Services Strategy</li>
+                <li>Customer Relationship Management</li>
+                <li>Technical Solution Delivery</li>
+                <li>Service Adoption Acceleration</li>
+                <li>Business Use Case Analysis</li>
+                <li>Stakeholder Management</li>
+            </ul>
+        </div>
     </section>
-    
-    <section>
-        <h2>Certifications</h2>
-        <p>AWS Certified | HBS CORe</p>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Amazon</h3>
+                <p><strong>Senior Business Intelligence Analyst</strong> | Boston, MA | Oct 2021 - Present</p>
+                <ul>
+                    <li>Architected Oracle-AWS data integration platform, reducing data reconciliation time by 85% and providing unified asset visibility across global supply chain.</li>
+                    <li>Engineered real-time OTIF (On-Time-In-Full) tracking system, improving delivery performance by 20% and decreasing customer escalations by 40%.</li>
+                    <li>Led migration of 120+ legacy Tableau dashboards to AWS QuickSight and Redshift, reducing annual operations costs by $80K and enhancing data accessibility for 200+ global users.</li>
+                    <li>Drove predictive analytics by leveraging ERP integrated data platforms, improving demand forecasting accuracy by 30% and minimizing supply chain disruptions.</li>
+                    <li>Designed an AI-powered chatbot leveraging supply chain data, automating customer inquiries, reducing support ticket volume by 15%, and improving response time.</li>
+                    <li>Developed business case and financial models that secured $3.7M in funding by demonstrating ERP-driven cost efficiencies and increasing internal team adoption by 280%.</li>
+                    <li>Managed a team of 5, conducting active mentoring, weekly standups, and standardizing technical documentation, data governance & analytics best practices.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Homesite Insurance</h3>
+                <p><strong>Data Warehouse Engineer</strong> | Boston, MA | Feb 2017 - Jun 2020</p>
+                <ul>
+                    <li>Conceptualized and implemented a data model in SQL server for performance KPIs, optimizing stored procedures to generate weekly and monthly reporting.</li>
+                    <li>Automated monthly data workflows, reducing processing time from 1 week to 8 minutes.</li>
+                    <li>Led migration initiatives from on-premise SQL server data to AWS Cloud, ensuring 100% data accuracy.</li>
+                    <li>Engineered SQL Server Integration Services (SSIS) workflows, integrating disparate data sources, improving data accessibility and reducing load time by 50%.</li>
+                </ul>
+            </div>
+        </div>
     </section>
-    
-    <section>
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Data Analytics Dashboard</strong> - Built a BI dashboard for supply chain optimization.</li>
-            <li><strong>Machine Learning Model</strong> - Developed a predictive model for customer segmentation.</li>
-        </ul>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <p><strong>Analytics Tools:</strong> AWS S3, Glue, IAM, Redshift, Tableau, Power BI, Looker, SSIS, MS Excel, Oracle SQL, GCP BigQuery.</p>
+            <p><strong>Programming & Databases:</strong> SQL, Python, MS SQL Server, MS Access, Oracle EBS, GCP BigQuery.</p>
+            <p><strong>PM Skills:</strong> Agile, SCRUM, JIRA, Confluence, A/B Testing, UAT, Regression Testing.</p>
+        </div>
     </section>
-    
-    <section>
-        <h2>Contact</h2>
-        <p>Email: your.email@example.com</p>
-        <p>GitHub: <a href="https://github.com/yourprofile">github.com/yourprofile</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <ul>
+                <li>AWS Certified Solutions Architect - Associate</li>
+                <li>AWS Certified Cloud Practitioner</li>
+                <li>AWS Certified AI Practitioner</li>
+            </ul>
+        </div>
     </section>
-    
-    <script>
-        // Dark Mode Toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-    </script>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <section id="publications">
+        <div class="container">
+            <h2>Research Publications</h2>
+            <p><strong>Pooja Shinde, et al.</strong> “PLC-Based Control System for Hardening and Tempering Furnace in Heat Treatment Plant”, <em>International Journal of Advanced Research In Electrical and Instrumentation Engineering</em> - Vol. 3, Issue 4, April 2014.</p>
+        </div>
+    </section>
+
+    <section id="leadership">
+        <div class="container">
+            <h2>Leadership and Volunteering</h2>
+            <ul>
+                <li>Board Member, Amazon Women in Engineering - Boston Chapter (2021 - Current)</li>
+                <li>Executive Director, Indian Association of Greater Boston (2023 - 2024)</li>
+                <li>Founded 'WomenRockTech' business resource group at Homesite (2017 - 2020)</li>
+                <li>Awarded Certificate of Leadership 2010-11 by National Entrepreneurship Network (NEN)</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pooja Shinde</p>
+        </div>
+    </footer>
 </body>
 </html>
