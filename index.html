@@ -1,126 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!doctype html>
+<html ng-app="tagdemo">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pooja Shinde - Resume</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Impressive - Shaopeng Zhang</title>
+  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/libs/bootflat/css/bootflat.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="icon" href="assets/images/keyboard16.png" sizes="16x16">
+  <link rel="icon" href="assets/images/keyboard32.png" sizes="32x32">
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: 758va66jwo20ou
+  authorize: true
+  onLoad: onLinkedInJSLoad
+  </script>
+  <!--  -->
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Pooja Shinde</h1>
-            <p class="subtitle">Senior Business Intelligence Analyst | Data Analytics Expert | AWS Certified</p>
-            <p class="contact">Boston, MA | poojaxshinde@gmail.com | 617-620-1786 | <a href="https://www.linkedin.com/in/shinde-pooja" target="_blank">LinkedIn</a></p>
-        </div>
-    </header>
 
-    <section id="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="education-item">
-                <h3>Harvard Business School Online</h3>
-                <p><strong>CORe (Credential of Readiness)</strong> | Mar 2025</p>
-                <p><strong>Coursework:</strong> Business Analytics, Economics for Managers & Financial Accounting</p>
+<body id="appBody" ng-controller="AppController"  ontouchstart="">
+
+  <div class="article-viewport" >
+    <article ng-controller="UIController" class="linear-scroll-animation">
+      <section id="step0" class="step text-center" ng-class="{'folded': completedSection >= 0}">
+        <div class="content">
+          <div load-progress-icon iconclass="fa fa-linkedin-square glyphicon" progress="{{loadPercentage.linkedIn}}" title="LinkedIn, the LinkedIn logo, the IN logo and InMail are registered trademarks or trademarks of LinkedIn Corporation and its affiliates in the United States and/or other countries."></div>
+
+          <div ng-if="!$parent.staticApp">
+           <script type="in/Login" data-onAuth="loadData">
+
+           </script>
+         </div>
+
+
+         <div ng-if="!$parent.staticApp" class="how-to-use transparent-first" ng-class="{'visible': $parent.linkedInLoaded() && !$parent.linkedInAuthenticated() && !visible('linkedIn'), 'collapsed': $parent.linkedInLoaded() && $parent.linkedInAuthenticated()}">
+           <span class="fa fa-hand-o-up center-block bouncing-animation top-space-xs" visible-on-time time="1500"></span>
+           <p class="top-space-sm" visible-on-time time="1500">Sign in to access your profile.</p>
+           <p visible-on-time time="1500"> Or, see a <a href=".?view=shaopeng">demo of the developer</a> first. </p>
+           
+           <p class="top-space-lg text-lg" ng-if="$parent.possiblyOnMobile" visible-on-time time="1500"><i><strong>Are you using a smart phone or tablet?</strong></i></p>
+           <p ng-if="$parent.possiblyOnMobile" visible-on-time time="1500">After you sign in, please come back and refresh this page. </p>
+
+         </div>
+
+         <h1 class="transparent-first" visible-on-mark mark="{{visible('linkedIn')}}"> {{profile.firstName}} {{profile.lastName}}</h1>
+
+
+       </div>
+     </section>
+     <section id="step1" class="step text-center" ng-class="{'folded': completedSection >= 1}">
+      <div class="content" >
+        <h2><a class="btn btn-primary btn-lg" ng-click="scrollToSection(1);displaySectionContent(1, 'summary')">About me...</a></h2>           
+        <div load-progress-icon iconclass="glyphicon glyphicon-user" progress="{{loadPercentage.summary}}"></div>
+
+        <div class="aboutme-viewport row"  visible-on-mark mark="{{visible('summary')}}">
+          <img ng-src="{{profile.pictureUrls.values[0]}}" class="col-sm-2 col-sm-offset-1 col-lg-2 col-lg-offset-2">
+          <div class="intro col-sm-8 col-lg-6 text-left">
+            <h4 class="headline text-lg">{{profile.headline}}</h4> 
+            <p class="text-left" break-at-n content="{{summary !== ' ' && summary || 'There is no summary on your profile. Add some to let it show up here. '}}"></p>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+    <section id="step2" class="step text-center" ng-class="{'folded': completedSection >= 2}">
+      <div class="content">
+        <h2><a class="btn btn-lg btn-primary" ng-click="scrollToSection(2);displaySectionContent(2, 'educations')" >What do I know?</a></h2>
+        <div load-progress-icon iconclass="glyphicon fa fa-graduation-cap" progress="{{loadPercentage.educations}}" reverse="true"></div>
+
+        <div class="row education" visible-on-mark mark="{{visible('educations')}}">
+          <div class="col-md-12">
+            <p ng-if="educations.length === 0">There is no education information on your profile. Add some to let it show up here. </p>
+            <div class="timeline text-left">
+              <dl>
+                <dt class="profile-picture">
+                  <img class="events-object img-rounded" ng-src="{{profile.pictureUrls.values[0]}}">
+                </dt>
+                <div ng-repeat="edu in educations track by $index">                    
+                  <dt ng-if="edu.id">{{edu.endDate.year}}</dt>
+                  <dd ng-if="edu.id" class="pos-{{$even ? 'right' : 'left'}} clearfix" visible-on-mark mark="{{visible('educations')}}" ng-style="{'transition': 'opacity 0.4s ease-out' + ($index * 0.2) + 's'}">
+                    <div class="circ"></div>
+                    <div class="time">{{edu.startDate.year}} - {{edu.endDate.year || 'Present'}}</div>
+                    <div class="events" click-add-class toggleclass="expanded">
+                      <div class="pull-left">
+                        <img class="events-object img-rounded" ng-src="{{findSchoolLogoUrlFromCompay(edu.schoolName) || profile.pictureUrls.values[0]}}">
+                      </div>
+                      <div class="events-body">
+                        <h4 class="events-heading">{{edu.degree}}, {{edu.fieldOfStudy}}</h4>
+                        <h4 class="events-heading">{{edu.schoolName}}</h4>
+                        <p break-at-n content="{{edu.notes}}"></p>
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+
+
+              </dl>
             </div>
-            <div class="education-item">
-                <h3>New Jersey Institute of Technology</h3>
-                <p><strong>Master of Science, Information Systems</strong> | May 2017</p>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+    <section id="step3" class="step text-center" ng-class="{'folded': completedSection >= 3}">
+      <div class="content" >
+        <h2><a class="btn btn-lg btn-primary" ng-click="scrollToSection(3);displaySectionContent(3, 'skills'); highlightSkills(-1);" >What skills do I have?</a></h2>
+        <div load-progress-icon iconclass="glyphicon glyphicon-globe" progress="{{loadPercentage.skills}}"></div>
+        <p ng-if="skills.length === 0" visible-on-mark mark="{{visible('skills')}}">There is no skills information on your profile. Add some to let it show up here. </p>
+        <div ng-if="profile.skills.categories" class="btn-group" ng-blur="highlightSkills(-1)" visible-on-mark mark="{{visible('skills')}}">
+          <button ng-repeat="c in profile.skills.categories track by $index" type="button" class="btn btn-default" ng-class="{'active': highlightingCategoryId === $index}" ng-click="highlightSkills($index)">{{c.name}}</button>
+        </div>
+        <ul class="adv-cloud" ng-class="{'blur': blurringSkills}">
+          <li ng-repeat="skill in skills track by $index" data-category-id="{{skill.categoryId}}"  ng-class="{'highlight': +skill.categoryId === +highlightingCategoryId}" style="{{twinkleStyle(skill.value, $index, skills.length)}}" visible-on-mark mark="{{visible('skills')}}">{{skill.name}}</li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <section id="step4" class="step text-center" ng-class="{'folded': completedSection >= 4}">
+      <div class="content">
+        <h2><a class="btn btn-primary btn-lg" ng-click="scrollToSection(4); displaySectionContent(4, 'positions')">Positions I have taken...</a></h2>
+        <div load-progress-icon iconclass="glyphicon glyphicon-briefcase" progress="{{loadPercentage.positions}}"></div>
+        <p ng-if="positions.length === 0" visible-on-mark mark="{{visible('positions')}}">There is no positions information on your profile. Add some to let it show up here. </p>
+        <div class="row" visible-on-mark mark="{{visible('positions')}}">
+          <div class="col-md-12">
+            <div class="timeline text-left">
+              <dl>
+                <dt class="profile-picture">
+                  <img class="events-object img-rounded" ng-src="{{profile.pictureUrls.values[0]}}">
+                </dt>
+                <div ng-repeat="p in positions track by $index" ng-class="{'current':p.isCurrent}">                    
+                  <dt ng-if="p.mark">{{p.mark}}</dt>
+                  <dd ng-if="p.id" class="pos-{{p.even ? 'right' : 'left'}} clearfix" visible-on-mark mark="{{visible('positions')}}" ng-style="{'transition': 'opacity 0.4s ease-out' + ($index * 0.2) + 's'}">
+                    <div class="circ"></div>
+                    <div class="time">{{p.startDate.month | intToMonth}}, {{p | forHowLong}}</div>
+                    <div class="events" click-add-class toggleclass="expanded">
+                      <div ng-if="p.logoUrl || profile.pictureUrls.values[0]" class="pull-left logo-container">
+                        <span class="vertical-helper"></span>
+                        <img class="events-object img-rounded" ng-src="{{p.logoUrl || profile.pictureUrls.values[0]}}">
+                      </div>
+                      <div class="events-body">
+                        <h4 class="events-heading">{{p.title}}</h4>
+                        <h4 class="events-heading">{{p.company.name}}</h4>
+
+                        <p break-at-n content="{{p.summary}}"></p>
+
+
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+
+
+              </dl>
             </div>
-            <div class="education-item">
-                <h3>University of Pune</h3>
-                <p><strong>Bachelor of Engineering, Electronics & Telecommunication</strong> | May 2014</p>
-            </div>
+          </div>
         </div>
+        <div visible-on-mark mark="{{visible('positions')}}">
+          <div class="top-space-lg">
+
+            <a ng-if="profile.publicProfileUrl" target="_blank" ng-href="{{profile.publicProfileUrl}}" class="btn btn-primary" ><span class="glyphicon glyphicon-new-window"></span>&nbsp;&nbsp;See {{$parent.staticApp && "Shaopeng's" || "My"}} LinkedIn Page</a>
+          </div>
+          <!-- <div class="top-space" ng-if="$parent.staticApp">
+            <a class="btn btn-primary" ng-href=".?view=me">See My LinkedIn Profile in Action!</a>
+          </div> -->
+          
+<!-- 
+          <div ng-if="!$parent.staticApp" class="top-space">
+            <a ng-click="signOut()" href="#">Sign out my LinkedIn profile</a>
+          </div> -->
+
+          <div ng-if="!$parent.staticApp" class="top-space">
+            <a href=".?view=shaopeng">Who developed this? </a>
+          </div>
+
+          <div class="top-space">
+
+            <script type="IN/Share" data-url="http://szhangpitt.github.io/?view=me" data-counter="right"></script>
+
+          </div>
+          
+        </div>
+
+
+
+      </div>
     </section>
 
-    <section id="core-competencies">
-        <div class="container">
-            <h2>Core Competencies</h2>
-            <ul>
-                <li>Cloud Services Strategy</li>
-                <li>Customer Relationship Management</li>
-                <li>Technical Solution Delivery</li>
-                <li>Service Adoption Acceleration</li>
-                <li>Business Use Case Analysis</li>
-                <li>Stakeholder Management</li>
-            </ul>
-        </div>
-    </section>
+  </article>
+</div>
 
-    <section id="experience">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="experience-item">
-                <h3>Amazon</h3>
-                <p><strong>Senior Business Intelligence Analyst</strong> | Boston, MA | Oct 2021 - Present</p>
-                <ul>
-                    <li>Architected Oracle-AWS data integration platform, reducing data reconciliation time by 85% and providing unified asset visibility across global supply chain.</li>
-                    <li>Engineered real-time OTIF (On-Time-In-Full) tracking system, improving delivery performance by 20% and decreasing customer escalations by 40%.</li>
-                    <li>Led migration of 120+ legacy Tableau dashboards to AWS QuickSight and Redshift, reducing annual operations costs by $80K and enhancing data accessibility for 200+ global users.</li>
-                    <li>Drove predictive analytics by leveraging ERP integrated data platforms, improving demand forecasting accuracy by 30% and minimizing supply chain disruptions.</li>
-                    <li>Designed an AI-powered chatbot leveraging supply chain data, automating customer inquiries, reducing support ticket volume by 15%, and improving response time.</li>
-                    <li>Developed business case and financial models that secured $3.7M in funding by demonstrating ERP-driven cost efficiencies and increasing internal team adoption by 280%.</li>
-                    <li>Managed a team of 5, conducting active mentoring, weekly standups, and standardizing technical documentation, data governance & analytics best practices.</li>
-                </ul>
-            </div>
+<footer class="text-center">
+  <p class="text-muted">Copyright © 2014 &nbsp;&nbsp;<a href="http://shaopeng.us">Shaopeng Zhang</a></p>
+</footer>
+<script src="assets/libs/libs.js"></script>
+<script src="assets/scripts/all.js"></script>
 
-            <div class="experience-item">
-                <h3>Homesite Insurance</h3>
-                <p><strong>Data Warehouse Engineer</strong> | Boston, MA | Feb 2017 - Jun 2020</p>
-                <ul>
-                    <li>Conceptualized and implemented a data model in SQL server for performance KPIs, optimizing stored procedures to generate weekly and monthly reporting.</li>
-                    <li>Automated monthly data workflows, reducing processing time from 1 week to 8 minutes.</li>
-                    <li>Led migration initiatives from on-premise SQL server data to AWS Cloud, ensuring 100% data accuracy.</li>
-                    <li>Engineered SQL Server Integration Services (SSIS) workflows, integrating disparate data sources, improving data accessibility and reducing load time by 50%.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <section id="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <p><strong>Analytics Tools:</strong> AWS S3, Glue, IAM, Redshift, Tableau, Power BI, Looker, SSIS, MS Excel, Oracle SQL, GCP BigQuery.</p>
-            <p><strong>Programming & Databases:</strong> SQL, Python, MS SQL Server, MS Access, Oracle EBS, GCP BigQuery.</p>
-            <p><strong>PM Skills:</strong> Agile, SCRUM, JIRA, Confluence, A/B Testing, UAT, Regression Testing.</p>
-        </div>
-    </section>
+  ga('create', 'UA-71558957-1', 'auto');
+  ga('send', 'pageview');
 
-    <section id="certifications">
-        <div class="container">
-            <h2>Certifications</h2>
-            <ul>
-                <li>AWS Certified Solutions Architect - Associate</li>
-                <li>AWS Certified Cloud Practitioner</li>
-                <li>AWS Certified AI Practitioner</li>
-            </ul>
-        </div>
-    </section>
+</script>
 
-    <section id="publications">
-        <div class="container">
-            <h2>Research Publications</h2>
-            <p><strong>Pooja Shinde, et al.</strong> “PLC-Based Control System for Hardening and Tempering Furnace in Heat Treatment Plant”, <em>International Journal of Advanced Research In Electrical and Instrumentation Engineering</em> - Vol. 3, Issue 4, April 2014.</p>
-        </div>
-    </section>
-
-    <section id="leadership">
-        <div class="container">
-            <h2>Leadership and Volunteering</h2>
-            <ul>
-                <li>Board Member, Amazon Women in Engineering - Boston Chapter (2021 - Current)</li>
-                <li>Executive Director, Indian Association of Greater Boston (2023 - 2024)</li>
-                <li>Founded 'WomenRockTech' business resource group at Homesite (2017 - 2020)</li>
-                <li>Awarded Certificate of Leadership 2010-11 by National Entrepreneurship Network (NEN)</li>
-            </ul>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Pooja Shinde</p>
-        </div>
-    </footer>
 </body>
 </html>
