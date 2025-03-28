@@ -1,0 +1,89 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #2a2a2a;
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+h2 {
+    margin-top: 30px;
+    color: #333;
+    font-size: 1.8em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.dark-mode header {
+    color: #f4f4f4;
+}
+
+body.dark-mode h2 {
+    color: #f4f4f4;
+    border-color: #555;
+}
+
+body.dark-mode button {
+    background-color: #555;
+}
+
+body.dark-mode button:hover {
+    background-color: #777;
+}
